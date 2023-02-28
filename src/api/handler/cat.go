@@ -7,6 +7,7 @@ import (
 	"math/rand"
 	"net/http"
 
+	"github.com/TimetoPretend54/go-chatgpt-copilot/model"
 	"github.com/labstack/echo/v4"
 )
 
@@ -17,10 +18,10 @@ type Cat struct {
 	Age   int    `json:"age"`
 }
 
-var cats = []Cat{
-	Cat{Name: "Whiskers", Breed: "Siamese", Age: 5},
-	Cat{Name: "Shadow", Breed: "Persian", Age: 3},
-	Cat{Name: "Socks", Breed: "Tabby", Age: 4},
+var cats = []model.Cat{
+	{Name: "Whiskers", Breed: "Siamese", Age: 5},
+	{Name: "Shadow", Breed: "Persian", Age: 3},
+	{Name: "Socks", Breed: "Tabby", Age: 4},
 }
 
 // GetCat returns a cat
@@ -36,7 +37,7 @@ func GetCats(c echo.Context) error {
 
 // AddCat adds a cat
 func AddCat(c echo.Context) error {
-	var newCat Cat
+	var newCat model.Cat
 	if err := c.Bind(&newCat); err != nil {
 		return err
 	}

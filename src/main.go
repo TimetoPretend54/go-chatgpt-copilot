@@ -9,8 +9,8 @@ import (
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 
-	animalMiddleware "github.com/TimetoPretend54/go-chatgpt-copilot/animal-api/middleware"
-	"github.com/TimetoPretend54/go-chatgpt-copilot/animal-api/routes"
+	"github.com/TimetoPretend54/go-chatgpt-copilot/api"
+	animalMiddleware "github.com/TimetoPretend54/go-chatgpt-copilot/api/middleware"
 )
 
 func main() {
@@ -23,8 +23,12 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Load animal routes
-	routes.LoadAnimalRoutes(e)
+	api.LoadAnimalRoutes(e)
+
+	// Info Msg
+	log.Println("Example API Call: http://localhost:8081/animals/cat")
+	log.Println("Swagger Docs: http://localhost:8081/swagger/")
 
 	// Start server
-	log.Fatal(e.Start(":8080"))
+	log.Fatal(e.Start(":8081"))
 }

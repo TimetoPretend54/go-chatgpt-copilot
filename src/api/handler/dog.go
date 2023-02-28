@@ -7,21 +7,15 @@ import (
 	"math/rand"
 	"net/http"
 
+	"github.com/TimetoPretend54/go-chatgpt-copilot/model"
 	"github.com/labstack/echo/v4"
 )
 
-// Dog structure for holding dog information
-type Dog struct {
-	Name  string `json:"name"`
-	Breed string `json:"breed"`
-	Age   int    `json:"age"`
-}
-
-var dogs = []Dog{
-	Dog{Name: "Max", Breed: "Golden Retriever", Age: 5},
-	Dog{Name: "Buddy", Breed: "Labrador Retriever", Age: 7},
-	Dog{Name: "Daisy", Breed: "Beagle", Age: 3},
-	Dog{Name: "Charlie", Breed: "Poodle", Age: 2},
+var dogs = []model.Dog{
+	{Name: "Max", Breed: "Golden Retriever", Age: 5},
+	{Name: "Buddy", Breed: "Labrador Retriever", Age: 7},
+	{Name: "Daisy", Breed: "Beagle", Age: 3},
+	{Name: "Charlie", Breed: "Poodle", Age: 2},
 }
 
 // GetDog returns a dog
@@ -37,7 +31,7 @@ func GetDogs(c echo.Context) error {
 
 // AddDog adds a dog
 func AddDog(c echo.Context) error {
-	var newDog Dog
+	var newDog model.Dog
 	if err := c.Bind(&newDog); err != nil {
 		return err
 	}
