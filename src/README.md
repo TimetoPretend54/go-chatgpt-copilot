@@ -29,9 +29,45 @@ The Animal API is a simple example of an API built with Golang and the Echo fram
    go test ./...
    ```
 
+## Makefile Commands
+
+Default will clean, dependency install, build, and run lint 
+```
+make
+````
+
+1. Build Project, (darwin, window, and linux builds)
+   ```
+   make build
+   ./out/{OS}/go-chatgpt-copilot 
+   ```
+2. Run Project
+   ```
+   make run
+   ```
+3. Test Project
+   ```
+   make test
+   ```
+4. Install Dependencies
+   ```
+   make dep
+   ```
+5. Clean Project
+   ```
+   make clean
+   ```
+6. Run [Lint Check](https://golangci-lint.run/)
+   ```
+   make lint
+   ```
+
 ## Accessing the Swagger UI
 
-The Swagger UI for the Animal API can be accessed by navigating to: http://localhost:8080/swagger/ in your web browser.
+The Swagger UI for the Animal API can be accessed by navigating to: 
+> http://localhost:8081/swagger/ 
+
+in your web browser (once go app is running).
 
 ## Conclusion
 

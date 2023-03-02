@@ -1,0 +1,22 @@
+linters:
+  enable-all: true
+  disable:
+    - bodyclose
+    - wrapcheck
+    - paralleltest
+    - varnamelen
+    - testpackage
+    - gomnd
+    - godox
+    - godot
+    - gci
+    # Local Repo w/ test/dummy code, Would not normally skip this one
+    - gochecknoglobals
+    - gosec
+issues:
+  exclude-rules:
+    - path: _test\.go
+      linters:
+        - funlen
+        - containedctx
+        - forcetypeassert
