@@ -22,8 +22,11 @@ func main() {
 	// e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 
+	// Inject Dependencies
+	dc := api.InitDependencies()
+
 	// Load animal routes
-	api.LoadAnimalRoutes(e)
+	dc.LoadAnimalRoutes(e)
 
 	// Info Msg
 	log.Println("Example API Call: http://localhost:8081/animals/cat")

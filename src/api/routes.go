@@ -8,12 +8,10 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
-
-	"github.com/TimetoPretend54/go-chatgpt-copilot/api/handler"
 )
 
 // LoadAnimalRoutes adds animal related routes to the provided Echo instance
-func LoadAnimalRoutes(e *echo.Echo) {
+func (dc *DependencyContainer) LoadAnimalRoutes(e *echo.Echo) {
 
 	// Animal routes group
 	animalGroup := e.Group("/animals")
@@ -23,16 +21,16 @@ func LoadAnimalRoutes(e *echo.Echo) {
 	}))
 
 	// Dog routes
-	animalGroup.GET("/dog", handler.GetDog)
-	animalGroup.GET("/dogs", handler.GetDogs)
-	animalGroup.GET("/dogs/:name", handler.GetDogByName)
-	animalGroup.POST("/dogs", handler.AddDog)
+	animalGroup.GET("/dog", dc.DogCtl.GetDog)
+	animalGroup.GET("/dogs", dc.DogCtl.GetDogs)
+	animalGroup.GET("/dogs/:name", dc.DogCtl.GetDogByName)
+	animalGroup.POST("/dogs", dc.DogCtl.AddDog)
 
 	// Cat routes
-	animalGroup.GET("/cat", handler.GetCat)
-	animalGroup.GET("/cats", handler.GetCats)
-	animalGroup.GET("/cats/:name", handler.GetCatByName)
-	animalGroup.POST("/cats", handler.AddCat)
+	animalGroup.GET("/cat", dc.CatCtl.GetCat)
+	animalGroup.GET("/cats", dc.CatCtl.GetCats)
+	animalGroup.GET("/cats/:name", dc.CatCtl.GetCatByName)
+	animalGroup.POST("/cats", dc.CatCtl.AddCat)
 
 	// Swagger routes (on Windows, able to use "/assets/swaggerapi", but not on linux")
 	e.Static("/swagger", "assets/swaggerapi")

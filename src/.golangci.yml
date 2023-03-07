@@ -9,7 +9,6 @@ linters:
     - gomnd
     - godox
     - godot
-    - gci
     # Local Repo w/ test/dummy code, Would not normally skip this one
     - gochecknoglobals
     - gosec
