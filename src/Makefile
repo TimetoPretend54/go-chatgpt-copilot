@@ -7,10 +7,12 @@ LINT = github.com/golangci/golangci-lint/cmd/golangci-lint@${LINT_VERSION}
 # must be first
 default: clean dep build lint
 
+windows: clean dep build-windows
+
 # clean - removes object files from package src directories
 clean:
 	go clean
-	rm -rf ./${OUT_DIR}
+	-rm -rf ./${OUT_DIR}
 
 # install dependencies
 dep:
@@ -22,6 +24,11 @@ build: clean
 	GOARCH=amd64 GOOS=darwin go build -tags="" -o ${OUT_DIR}/darwin/ ./...
 	GOARCH=amd64 GOOS=windows go build -tags="" -o ${OUT_DIR}/windows/ ./...
 	GOARCH=amd64 GOOS=linux go build -tags="" -o ${OUT_DIR}/linux/ ./...
+
+build-windows: clean
+	set GOARCH=amd64 set GOOS=darwin go build -tags="" -o ${OUT_DIR}/darwin/ ./...
+	set GOARCH=amd64 set GOOS=windows go build -tags="" -o ${OUT_DIR}/windows/ ./...
+	set GOARCH=amd64 set GOOS=linux go build -tags="" -o ${OUT_DIR}/linux/ ./...
 
 # run project
 run:
