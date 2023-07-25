@@ -1,3 +1,4 @@
+BLAH2
 # go-example-chatgpt-copilot
 Golang project experimenting with [ChatGPT](https://openai.com/blog/chatgpt/) and [GitHub Copilot](https://github.com/features/copilot) tooling.
 
